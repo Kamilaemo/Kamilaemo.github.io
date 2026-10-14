@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О компании — СвязьТелеком</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📶</text></svg>">
+</head>
+<body>
+
+  <header class="site-header" data-header="about"></header>
+
+  <section class="hero" style="background:linear-gradient(135deg,#122a5e,#1d4ed8 60%,#0e7490)">
+    <div class="wrap hero__inner" style="padding:52px 0 46px">
+      <h1>О предприятии</h1>
+      <p>ООО «СвязьТелеком» — малый оператор связи, работающий на рынке телекоммуникаций с 2011 года.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid-3 mb-2">
+        <div class="card center">
+          <div class="stat"><span class="stat__label">Год основания</span><span class="stat__value">2011</span></div>
+        </div>
+        <div class="card center">
+          <div class="stat"><span class="stat__label">Обслуживаемых домов</span><span class="stat__value" data-stat-homes>—</span></div>
+        </div>
+        <div class="card center">
+          <div class="stat"><span class="stat__label">Сотрудников</span><span class="stat__value" data-stat-staff>—</span></div>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="align-items:start">
+        <div class="card card--pad-lg">
+          <h2>Кто мы</h2>
+          <p>«СвязьТелеком» — небольшое региональное предприятие связи, специализирующееся на
+             предоставлении широкополосного доступа в интернет, цифрового телевидения и телефонии
+             жителям и организациям города.</p>
+          <p>Мы построили собственную волоконно-оптическую сеть GPON, что позволяет обеспечивать
+             высокую скорость и надёжность соединения при доступной цене.</p>
+          <h3>Наши принципы</h3>
+          <ul class="tariff__list">
+            <li>Прозрачные тарифы без скрытых платежей</li>
+            <li>Быстрое подключение и качественная поддержка</li>
+            <li>Собственная техническая служба и склад оборудования</li>
+            <li>Индивидуальный подход к корпоративным клиентам</li>
+          </ul>
+        </div>
+
+        <div class="card card--pad-lg">
+          <h2>Автоматизация предприятия</h2>
+          <p>Для эффективного обслуживания абонентов на предприятии внедрена информационная
+             система, объединяющая работу контакт-центра, технической службы, бухгалтерии и склада.</p>
+          <dl class="kv">
+            <dt>Назначение</dt><dd>Учёт абонентов и услуг, обработка заявок, биллинг</dd>
+            <dt>Пользователи</dt><dd>Операторы, монтажники, администраторы, абоненты</dd>
+            <dt>Абонентский сервис</dt><dd>Личный кабинет, оплата, заявки</dd>
+            <dt>Режим работы</dt><dd>Круглосуточно</dd>
+          </dl>
+          <a class="btn btn--primary mt-2" href="docs.html">Документация ИС →</a>
+        </div>
+      </div>
+
+      <h2 class="mt-3">Организационная структура</h2>
+      <div class="grid grid-4">
+        <div class="card">
+          <h3>Директор</h3>
+          <p class="muted mb-0" style="font-size:.9rem">Общее руководство, заключение договоров с операторами.</p>
+        </div>
+        <div class="card">
+          <h3>Контакт-центр</h3>
+          <p class="muted mb-0" style="font-size:.9rem">Приём заявок, консультации абонентов, обработка обращений.</p>
+        </div>
+        <div class="card">
+          <h3>Техническая служба</h3>
+          <p class="muted mb-0" style="font-size:.9rem">Монтаж линий, настройка оборудования, устранение аварий.</p>
+        </div>
+        <div class="card">
+          <h3>Экономическая служба</h3>
+          <p class="muted mb-0" style="font-size:.9rem">Биллинг, расчёты с абонентами, учёт оборудования.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" data-footer></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const homes = document.querySelector("[data-stat-homes]");
+      const staff = document.querySelector("[data-stat-staff]");
+      if (homes) homes.textContent = Store.list("clients").length * 8 + 40;
+      if (staff) staff.textContent = Store.list("employees").length + 6;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты и поддержка — СвязьТелеком</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📶</text></svg>">
+</head>
+<body>
+
+  <header class="site-header" data-header="contacts"></header>
+
+  <section class="hero" style="background:linear-gradient(135deg,#122a5e,#1d4ed8 60%,#0e7490)">
+    <div class="wrap hero__inner" style="padding:52px 0 46px">
+      <h1>Контакты</h1>
+      <p>Свяжитесь с нами удобным способом — поддержка работает круглосуточно.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid-3 mb-2">
+        <div class="card">
+          <div class="card__icon">📞</div>
+          <h3>Телефон</h3>
+          <p class="mb-0"><a href="tel:+78172505050"><b>+7 (8172) 50-50-50</b></a><br>
+          <small>Единая справочная служба, круглосуточно</small></p>
+        </div>
+        <div class="card">
+          <div class="card__icon">✉️</div>
+          <h3>E-mail</h3>
+          <p class="mb-0"><a href="mailto:support@svyaztelecom.ru">support@svyaztelecom.ru</a><br>
+          <small>Ответ в течение 1 рабочего дня</small></p>
+        </div>
+        <div class="card">
+          <div class="card__icon">📍</div>
+          <h3>Офис</h3>
+          <p class="mb-0">г. Вологда, ул. Мира, д. 34<br>
+          <small>Пн–Пт 09:00–19:00, Сб 10:00–15:00</small></p>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="align-items:start">
+        <div class="card card--pad-lg">
+          <h3>Написать в поддержку</h3>
+          <p class="muted" style="font-size:.9rem">Если вы наш абонент, удобнее создать обращение
+             в личном кабинете — оно сразу попадёт в информационную систему.</p>
+          <form id="contactForm" novalidate>
+            <div class="field">
+              <label class="field__label" for="cf-fio">Ваше имя *</label>
+              <input class="input" id="cf-fio" name="fio" placeholder="Как к вам обращаться" required>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label class="field__label" for="cf-phone">Телефон</label>
+                <input class="input" id="cf-phone" name="phone" placeholder="+7 (___) ___-__-__">
+              </div>
+              <div class="field">
+                <label class="field__label" for="cf-email">E-mail</label>
+                <input class="input" id="cf-email" name="email" type="email" placeholder="mail@example.ru">
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cf-msg">Сообщение *</label>
+              <textarea class="textarea" id="cf-msg" name="text" placeholder="Опишите ваш вопрос" required></textarea>
+            </div>
+            <button class="btn btn--primary btn--block" type="submit">Отправить сообщение</button>
+          </form>
+        </div>
+
+        <div>
+          <div class="card mb-2">
+            <h3>Реквизиты предприятия</h3>
+            <dl class="kv">
+              <dt>Наименование</dt><dd>ООО «СвязьТелеком»</dd>
+              <dt>ИНН / КПП</dt><dd>3525012345 / 352501001</dd>
+              <dt>ОГРН</dt><dd>1113525000000</dd>
+              <dt>Юр. адрес</dt><dd>160000, г. Вологда, ул. Мира, д. 34</dd>
+              <dt>Расчётный счёт</dt><dd>40702810000000000001</dd>
+              <dt>Банк</dt><dd>ПАО «Банк», БИК 041909001</dd>
+            </dl>
+          </div>
+          <div class="card">
+            <h3>Часы работы контакт-центра</h3>
+            <div class="table-wrap">
+              <table class="table table--compact">
+                <tbody>
+                  <tr><td>Понедельник – Пятница</td><td><b>08:00 – 22:00</b></td></tr>
+                  <tr><td>Суббота – Воскресенье</td><td><b>09:00 – 20:00</b></td></tr>
+                  <tr><td>Техническая поддержка</td><td><b>круглосуточно</b></td></tr>
+                  <tr><td>Аварийная служба</td><td><b>круглосуточно</b></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="notice mt-2">🔔 При аварии на линии информация автоматически регистрируется
+            диспетчером и отображается в панели технической службы.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" data-footer></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Обработка формы обратной связи: сохраняется как обращение незарегистрированного лица
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("contactForm");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const f = new FormData(form);
+        const data = {
+          clientId: null,
+          subject: "Сообщение с сайта",
+          text: String(f.get("text") || "").trim() + "\n\nКонтакты: " +
+                String(f.get("fio") || "") + ", " + String(f.get("phone") || "") +
+                ", " + String(f.get("email") || ""),
+          status: "open", priority: "medium", createdAt: App.today(), answer: ""
+        };
+        if (!data.text) { App.toast("Введите сообщение", "err"); return; }
+        Store.insert("tickets", data);
+        form.reset();
+        App.openModal("✅ Сообщение отправлено",
+          "<p>Спасибо! Ваше обращение зарегистрировано и передано оператору контакт-центра.</p>" +
+          "<button class='btn btn--primary btn--block' data-close>Закрыть</button>");
+        App.toast("Обращение зарегистрировано", "ok");
+      });
+    });
+  </script>
+</body>
+</html>

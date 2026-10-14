@@ -1,0 +1,13 @@
+# Служебные и временные файлы
+svyaztelecom-site.zip
+*.zip
+
+# Системные файлы ОС
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Файлы редакторов
+.vscode/
+.idea/
+*.tmp

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>СвязьТелеком — подключение интернета, ТВ и телефонии</title>
+  <meta name="description" content="Информационная система малого предприятия связи «СвязьТелеком»: домашний интернет, цифровое телевидение, телефония и услуги для бизнеса.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📶</text></svg>">
+</head>
+<body>
+
+  <header class="site-header" data-header="home"></header>
+
+  <!-- ================= ХИРО ================= -->
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <div class="hero__grid">
+        <div>
+          <span class="pill">Малый оператор связи · с 2011 года</span>
+          <h1>Быстрый интернет, цифровое ТВ и связь для дома и бизнеса</h1>
+          <p>Оптическая сеть GPON до квартиры, круглосуточная техническая поддержка
+             и единая информационная система обслуживания абонентов.</p>
+          <div class="row mt-3">
+            <a class="btn btn--primary" href="#connect">Оставить заявку на подключение</a>
+            <a class="btn btn--ghost" href="tariffs.html" style="color:#fff;border-color:rgba(255,255,255,.5)">Посмотреть тарифы</a>
+          </div>
+          <div class="badge-row">
+            <span class="pill">🔌 До 1 Гбит/с</span>
+            <span class="pill">📺 200 каналов HD</span>
+            <span class="pill">🛠 Поддержка 24/7</span>
+            <span class="pill">🏢 Решения для бизнеса</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card__row"><span>Абонентов в сети</span><b data-stat="clients">—</b></div>
+          <div class="hero-card__row"><span>Действующих тарифов</span><b data-stat="tariffs">—</b></div>
+          <div class="hero-card__row"><span>Средняя скорость</span><b>до 1 Гбит/с</b></div>
+          <div class="hero-card__row"><span>Доступность сети</span><b>99,7 %</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ПРЕИМУЩЕСТВА ================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid-4">
+        <div class="card">
+          <div class="card__icon">🚀</div>
+          <h3>Скорость до 1 Гбит/с</h3>
+          <p class="muted mb-0">Оптическая технология GPON — стабильная скорость без просадок в часы пик.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">📺</div>
+          <h3>Более 200 каналов</h3>
+          <p class="muted mb-0">Цифровое телевидение в HD, архив передач и пауза в реальном времени.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">🧾</div>
+          <h3>Единый лицевой счёт</h3>
+          <p class="muted mb-0">Личный кабинет: оплата, история платежей, смена тарифа онлайн.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">🛠</div>
+          <h3>Поддержка 24/7</h3>
+          <p class="muted mb-0">Круглосуточный контакт-центр, выезд монтажника в течение 2 дней.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ТАРИФЫ (кратко) ================= -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="row row--between mb-2">
+        <div>
+          <h2 class="mb-0">Популярные тарифы</h2>
+          <p class="muted mb-0">Цены указаны в рублях за месяц. Оборудование — в рассрочку.</p>
+        </div>
+        <a class="btn btn--ghost" href="tariffs.html">Все тарифы →</a>
+      </div>
+      <div class="grid grid-3" data-tariffs data-limit="3"></div>
+    </div>
+  </section>
+
+  <!-- ================= УСЛУГИ ================= -->
+  <section class="section">
+    <div class="wrap">
+      <h2 class="center">Услуги предприятия</h2>
+      <p class="center muted mb-2">Полный спектр телекоммуникационных услуг для физических и юридических лиц.</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>🌐 Домашний интернет</h3>
+          <p class="muted">Безлимитный доступ в сеть по технологии «оптика в квартиру». Wi-Fi-роутер в комплекте.</p>
+          <a href="services.html">Подробнее →</a>
+        </div>
+        <div class="card">
+          <h3>📺 Цифровое ТВ</h3>
+          <p class="muted">Интерактивное телевидение с архивом, мультирум и просмотром на любых устройствах.</p>
+          <a href="services.html">Подробнее →</a>
+        </div>
+        <div class="card">
+          <h3>☎️ Телефония</h3>
+          <p class="muted">Городские номера, IP-телефония и многоканальные линии для офисов и организаций.</p>
+          <a href="services.html">Подробнее →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ПОДКЛЮЧЕНИЕ ================= -->
+  <section class="section" id="connect" style="background:var(--surface-2)">
+    <div class="wrap">
+      <div class="grid grid-2" style="align-items:start">
+        <div>
+          <h2>Подключение за 3 шага</h2>
+          <div class="stepper" style="flex-direction:column">
+            <div class="step"><b>Шаг 1</b>Оставляете заявку — она автоматически регистрируется в информационной системе.</div>
+            <div class="step"><b>Шаг 2</b>Оператор уточняет детали и согласует удобное время визита монтажника.</div>
+            <div class="step"><b>Шаг 3</b>Монтажник прокладывает оптику и настраивает оборудование. Готово!</div>
+          </div>
+          <div class="notice">
+            🎁 При подключении до конца месяца — <b>первый месяц бесплатно</b> и роутер в подарок на тарифах «Оптимум» и «Максимум».
+          </div>
+          <p class="muted">Уже наш абонент? <a href="login.html">Войдите в личный кабинет</a>, чтобы сменить тариф или передать показания.</p>
+        </div>
+
+        <div class="card card--pad-lg">
+          <h3>Заявка на подключение</h3>
+          <p class="muted" style="font-size:.9rem">Заполните форму — данные попадут в базу заявок ИС.</p>
+          <form id="requestForm" novalidate>
+            <div class="form-grid">
+              <div class="field field--full">
+                <label class="field__label" for="fio">ФИО / название организации *</label>
+                <input class="input" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
+              </div>
+              <div class="field">
+                <label class="field__label" for="phone">Телефон *</label>
+                <input class="input" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+              </div>
+              <div class="field">
+                <label class="field__label" for="tariffId">Тариф *</label>
+                <select class="select" id="tariffId" name="tariffId" required></select>
+              </div>
+              <div class="field field--full">
+                <label class="field__label" for="address">Адрес подключения</label>
+                <input class="input" id="address" name="address" placeholder="г. Вологда, ул. Мира, д. 34, кв. 5">
+              </div>
+              <div class="field field--full">
+                <label class="field__label" for="text">Комментарий</label>
+                <textarea class="textarea" id="text" name="text" placeholder="Удобное время визита, дополнительные пожелания..."></textarea>
+              </div>
+            </div>
+            <button class="btn btn--primary btn--block" type="submit">Отправить заявку</button>
+            <p class="field__hint center mt-1">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section">
+    <div class="wrap" style="max-width:820px">
+      <h2 class="center">Частые вопросы</h2>
+      <div class="mt-3">
+        <div class="accordion">
+          <button class="accordion__head">Сколько времени занимает подключение? <span>▾</span></button>
+          <div class="accordion__body"><p class="mb-0">Обычно от 1 до 3 рабочих дней с момента подтверждения заявки оператором. В большинстве домов города оптическая сеть уже построена.</p></div>
+        </div>
+        <div class="accordion">
+          <button class="accordion__head">Нужно ли покупать оборудование? <span>▾</span></button>
+          <div class="accordion__body"><p class="mb-0">Оптический терминал предоставляется предприятием. Wi-Fi-роутер можно приобрести в рассрочку или использовать собственный.</p></div>
+        </div>
+        <div class="accordion">
+          <button class="accordion__head">Как оплатить услуги? <span>▾</span></button>
+          <div class="accordion__body"><p class="mb-0">В личном кабинете банковской картой, через СБП, в отделении банка или по безналичному расчёту для юридических лиц.</p></div>
+        </div>
+        <div class="accordion">
+          <button class="accordion__head">Что делать при сбое связи? <span>▾</span></button>
+          <div class="accordion__body"><p class="mb-0">Создайте обращение в разделе «Поддержка» личного кабинета либо позвоните в контакт-центр. Заявка будет зарегистрирована в ИС и передана технической службе.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" data-footer></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Заполнение счётчиков на «плашке» из данных ИС
+    document.addEventListener("DOMContentLoaded", function () {
+      const s = document.querySelector('[data-stat="clients"]');
+      const t = document.querySelector('[data-stat="tariffs"]');
+      if (s) s.textContent = Store.list("clients").length;
+      if (t) t.textContent = Store.list("tariffs").filter((x) => x.active).length;
+    });
+  </script>
+</body>
+</html>

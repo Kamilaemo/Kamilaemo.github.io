@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход в систему — СвязьТелеком</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📶</text></svg>">
+</head>
+<body>
+
+  <header class="site-header" data-header="login"></header>
+
+  <section class="section">
+    <div class="wrap" style="max-width:960px">
+      <div class="grid grid-2" style="align-items:start">
+
+        <div class="card card--pad-lg">
+          <h2 class="mb-0">Вход в систему</h2>
+          <p class="muted">Авторизация в информационной системе предприятия.</p>
+
+          <div data-tabs>
+            <div class="tabs">
+              <button class="tab is-active" data-tab="client">Абонент</button>
+              <button class="tab" data-tab="staff">Сотрудник</button>
+            </div>
+          </div>
+
+          <div>
+            <!-- Вход абонента -->
+            <div class="tab-panel is-active" data-panel="client">
+              <form id="loginClientForm" novalidate>
+                <div class="field">
+                  <label class="field__label" for="c-login">Логин</label>
+                  <input class="input" id="c-login" name="login" autocomplete="username" placeholder="ivanov" required>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="c-pass">Пароль</label>
+                  <input class="input" id="c-pass" name="password" type="password" autocomplete="current-password" placeholder="••••••" required>
+                </div>
+                <button class="btn btn--primary btn--block" type="submit">Войти в личный кабинет</button>
+              </form>
+            </div>
+
+            <!-- Вход сотрудника -->
+            <div class="tab-panel" data-panel="staff">
+              <form id="loginStaffForm" novalidate>
+                <div class="field">
+                  <label class="field__label" for="s-login">Логин сотрудника</label>
+                  <input class="input" id="s-login" name="login" autocomplete="username" placeholder="operator" required>
+                </div>
+                <div class="field">
+                  <label class="field__label" for="s-pass">Пароль</label>
+                  <input class="input" id="s-pass" name="password" type="password" autocomplete="current-password" placeholder="••••••" required>
+                </div>
+                <button class="btn btn--primary btn--block" type="submit">Войти в панель управления</button>
+              </form>
+            </div>
+          </div>
+
+          <div id="loginError" class="notice notice--err hidden mt-2 mb-0"></div>
+        </div>
+
+        <div>
+          <div class="card mb-2">
+            <h3>Демонстрационные учётные записи</h3>
+            <p class="muted" style="font-size:.9rem">Для проверки работы системы используйте:</p>
+            <div class="table-wrap">
+              <table class="table table--compact">
+                <thead><tr><th>Роль</th><th>Логин</th><th>Пароль</th></tr></thead>
+                <tbody>
+                  <tr><td>Абонент</td><td>ivanov</td><td>12345</td></tr>
+                  <tr><td>Абонент</td><td>petrova</td><td>12345</td></tr>
+                  <tr><td>Абонент (заблокирован)</td><td>sidorov</td><td>12345</td></tr>
+                  <tr><td>Оператор</td><td>operator</td><td>operator</td></tr>
+                  <tr><td>Администратор</td><td>admin</td><td>admin</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <button class="btn btn--sm btn--ghost mt-2" id="fillClient">Заполнить вход абонента</button>
+            <button class="btn btn--sm btn--ghost mt-2" id="fillStaff">Вход администратора</button>
+          </div>
+
+          <div class="card">
+            <h3>Права доступа (роли)</h3>
+            <ul class="tariff__list">
+              <li><b>Абонент</b> — личный кабинет, оплата, заявки, обращения</li>
+              <li><b>Оператор</b> — обработка заявок и обращений, работа с абонентами</li>
+              <li><b>Администратор</b> — полный доступ, управление тарифами и персоналом</li>
+            </ul>
+            <div class="notice notice--warn mb-0">Нет учётной записи? Оставьте
+              <a href="index.html#connect">заявку на подключение</a> — аккаунт создаст оператор.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" data-footer></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Если открыт с ?role=admin — сразу показать вкладку сотрудника
+      if (new URLSearchParams(location.search).get("role") === "admin") {
+        document.querySelector('[data-tab="staff"]').click();
+      }
+
+      function fail(msg) {
+        const box = document.getElementById("loginError");
+        box.textContent = msg;
+        box.classList.remove("hidden");
+      }
+
+      document.getElementById("loginClientForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const f = new FormData(e.target);
+        const s = Auth.loginClient(f.get("login"), f.get("password"));
+        if (!s) return fail("Неверный логин или пароль абонента. Попробуйте ivanov / 12345.");
+        location.href = "cabinet.html";
+      });
+
+      document.getElementById("loginStaffForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const f = new FormData(e.target);
+        const s = Auth.loginEmployee(f.get("login"), f.get("password"));
+        if (!s) return fail("Неверный логин или пароль сотрудника. Попробуйте admin / admin.");
+        location.href = "admin.html";
+      });
+
+      document.getElementById("fillClient").addEventListener("click", function () {
+        document.querySelector('[data-tab="client"]').click();
+        document.getElementById("c-login").value = "ivanov";
+        document.getElementById("c-pass").value = "12345";
+        document.getElementById("loginError").classList.add("hidden");
+      });
+
+      document.getElementById("fillStaff").addEventListener("click", function () {
+        document.querySelector('[data-tab="staff"]').click();
+        document.getElementById("s-login").value = "admin";
+        document.getElementById("s-pass").value = "admin";
+        document.getElementById("loginError").classList.add("hidden");
+      });
+    });
+  </script>
+</body>
+</html>

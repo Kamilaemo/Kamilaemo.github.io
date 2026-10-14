@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Панель управления — СвязьТелеком</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📶</text></svg>">
+</head>
+<body>
+
+  <header class="site-header" data-header="admin"></header>
+
+  <div class="wrap app-shell">
+    <aside class="side">
+      <div class="side__user" id="sideUser"></div>
+      <nav class="side__nav">
+        <button class="side__link is-active" data-section="dashboard">📊 Дашборд</button>
+        <button class="side__link" data-section="requests">📝 Заявки</button>
+        <button class="side__link" data-section="clients">👥 Абоненты</button>
+        <button class="side__link" data-section="tickets">📨 Обращения</button>
+        <button class="side__link" data-section="tariffs">🏷 Тарифы</button>
+        <button class="side__link" data-section="equipment">📦 Оборудование</button>
+        <button class="side__link" data-section="staff">🧑‍💼 Сотрудники</button>
+        <button class="side__link" data-section="reports">📈 Отчёты</button>
+        <hr class="divider" style="margin:10px 0">
+        <button class="side__link" id="sideReset">♻️ Сбросить демо-данные</button>
+        <button class="side__link" id="logoutBtn" style="color:var(--danger)">🚪 Выйти</button>
+      </nav>
+    </aside>
+
+    <main>
+      <div id="view-dashboard" data-view="dashboard"></div>
+      <div id="view-requests" data-view="requests" class="hidden"></div>
+      <div id="view-clients" data-view="clients" class="hidden"></div>
+      <div id="view-tickets" data-view="tickets" class="hidden"></div>
+      <div id="view-tariffs" data-view="tariffs" class="hidden"></div>
+      <div id="view-equipment" data-view="equipment" class="hidden"></div>
+      <div id="view-staff" data-view="staff" class="hidden"></div>
+      <div id="view-reports" data-view="reports" class="hidden"></div>
+    </main>
+  </div>
+
+  <footer class="site-footer" data-footer></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

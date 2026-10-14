@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тарифы — СвязьТелеком</title>
+  <meta name="description" content="Тарифы на интернет, телевидение и телефонию. Прозрачные цены, без скрытых платежей.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📶</text></svg>">
+</head>
+<body>
+
+  <header class="site-header" data-header="tariffs"></header>
+
+  <section class="hero" style="background:linear-gradient(135deg,#122a5e,#1d4ed8 60%,#0e7490)">
+    <div class="wrap hero__inner" style="padding:52px 0 46px">
+      <h1>Тарифы и цены</h1>
+      <p>Выберите подходящий тариф. Смена тарифа в личном кабинете — бесплатно и без визита в офис.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid grid-3" data-tariffs></div>
+
+      <h2 class="mt-3">Сравнение тарифов</h2>
+      <div class="table-wrap">
+        <table class="table" id="tariffTable">
+          <thead>
+            <tr>
+              <th>Тариф</th><th>Скорость</th><th>Телеканалы</th>
+              <th>Тип услуги</th><th>Абон. плата</th><th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-2 mt-3">
+        <div class="card">
+          <h3>💳 Способы оплаты</h3>
+          <ul class="tariff__list">
+            <li>Банковская карта в личном кабинете</li>
+            <li>Система быстрых платежей (СБП) по QR-коду</li>
+            <li>Платёжные терминалы и отделения банков</li>
+            <li>Автоплатёж — списание с карты ежемесячно</li>
+            <li>Безналичный расчёт для юридических лиц</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>ℹ️ Условия</h3>
+          <p class="muted">Абонентская плата списывается ежемесячно с лицевого счёта. При недостатке
+             средств доступ приостанавливается, но восстанавливается сразу после пополнения.</p>
+          <p class="muted mb-0">При подключении двух и более услуг предоставляется скидка 10 %.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" data-footer></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Построение таблицы сравнения тарифов
+    document.addEventListener("DOMContentLoaded", function () {
+      const tbody = document.querySelector("#tariffTable tbody");
+      Store.list("tariffs").filter((t) => t.active)
+        .sort((a, b) => a.price - b.price)
+        .forEach((t) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML =
+            "<td><b>" + App.esc(t.name) + "</b><br><small>" + App.esc(t.code) + "</small></td>" +
+            "<td>" + (t.speed ? t.speed + " Мбит/с" : "—") + "</td>" +
+            "<td>" + (t.tv ? t.tv : "—") + "</td>" +
+            "<td>" + App.esc(t.type) + "</td>" +
+            "<td><b>" + App.money(t.price) + "</b>/мес.</td>" +
+            '<td><a class="btn btn--sm btn--primary" href="index.html?tariff=' + t.id + '#connect">Выбрать</a></td>';
+          tbody.appendChild(tr);
+        });
+    });
+  </script>
+</body>
+</html>
